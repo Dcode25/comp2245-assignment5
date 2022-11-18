@@ -9,8 +9,8 @@ $city=trim(filter_var($_GET['lookup'],FILTER_SANITIZE_STRING));
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
 $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%';");
 
-$querycity=$conn->query("SELECT cities.name, cities.district,cities.population 
-FROM countries LEFT JOIN cities ON countries.code = cities.country_code 
+$querycity=$conn->query("SELECT cities.name AS cname, cities.district AS cdist ,cities.population  AS cpop
+FROM countries JOIN cities ON countries.code = cities.country_code 
 WHERE countries.name LIKE '%$country%'");
 $cityy= $querycity->fetchAll(PDO::FETCH_ASSOC);
 
@@ -61,9 +61,9 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <tbody>
       <?php foreach ($cityy as $context): ?>
         <tr>
-          <td><?php echo $context["name"]; ?></td>
-          <td><?php echo $context["district"]; ?></td>
-          <td><?php echo $context["population"]; ?></td>
+          <td><?php echo $context["cname"]; ?></td>
+          <td><?php echo $context["cdist"]; ?></td>
+          <td><?php echo $context["cpop"]; ?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>
