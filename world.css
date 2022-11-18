@@ -1,17 +1,29 @@
-<?php
-$host = 'localhost';
-$username = 'lab5_user';
-$password = '';
-$dbname = 'world';
+h1
+{
+    color: #ffffff;
+    font-size: 24px;
+}
+header{
+    padding: 15px 20px;
+    background-color: #000000;
+    border-radius: 5px;    
+}
 
-$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-$stmt = $conn->query("SELECT * FROM countries");
-
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-?>
-<ul>
-<?php foreach ($results as $row): ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
-<?php endforeach; ?>
-</ul>
+p{
+    font-size: 18px;
+}
+button {
+    padding: 15px 20px;
+    background-color: #89f615;
+    border-radius: 5px;
+  }
+#country{
+    padding: 15px 20px;
+    background-color: #fcfcfc;
+    border-radius: 5px;
+}
+.container {
+    margin: 0 auto;
+    max-width: 960px;
+    width: 100%;
+}
